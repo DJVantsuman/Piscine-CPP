@@ -6,7 +6,7 @@
 /*   By: itsuman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/01 10:20:13 by itsuman           #+#    #+#             */
-/*   Updated: 2017/11/01 11:46:27 by itsuman          ###   ########.fr       */
+/*   Updated: 2017/11/01 14:57:27 by itsuman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ void	Logger::logToConsole(std::string str) {
 }
 
 void	Logger::logToFile(std::string str) {
-	std::ofstream fout(file);
+	std::ofstream fout(file, std::ios::binary | std::ios::app);
 	fout << str << std::endl;
+	fout.close();
 }
 
 std::string	Logger::makeLogEntry(std::string message) {
 	time_t now = time(0);
 	char* dt = ctime(&now);
 	std::string s = dt;
-	s.erase('\n', 1);
 	message = s + message;
 	return message;
 }
