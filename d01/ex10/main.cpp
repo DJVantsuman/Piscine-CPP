@@ -6,7 +6,7 @@
 /*   By: itsuman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/01 11:54:27 by itsuman           #+#    #+#             */
-/*   Updated: 2017/11/01 12:41:27 by itsuman          ###   ########.fr       */
+/*   Updated: 2017/11/01 15:36:35 by itsuman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,26 @@ int	main(int ac, char *av[])
 	std::string str;
 	if(ac == 1)
 	{
-		while(1)
+		while(std::getline(std::cin, str))
 		{
-			std::cin >> str;
 			std::cout << str << std::endl;
 		}
 	}
 	else if(ac > 1)
 	{	
-		istr.open(av[1]);
-		if (istr)
+		for(int i = 1; i < ac; i++)
 		{
-			while(std::getline(istr, str)){
-				std::cout << str << std::endl;
+			istr.open(av[i]);
+			if (istr)
+			{
+				while(std::getline(istr, str)){
+					std::cout << str << std::endl;
+				}
+				istr.close();
 			}
-			istr.close();
+			else
+				std::cout << "cat: " << av[i] << " : No such file or directory" << std::endl;
 		}
-		else
-			std::cout << "cat: 1: No such file or directory" << std::endl;
 	}
 	return 0;
 }

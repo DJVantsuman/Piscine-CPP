@@ -6,22 +6,22 @@
 /*   By: itsuman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/01 08:27:29 by itsuman           #+#    #+#             */
-/*   Updated: 2017/11/01 10:18:33 by itsuman          ###   ########.fr       */
+/*   Updated: 2017/11/01 23:09:19 by itsuman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Human.hpp"
 
 void	Human::meleeAttack(std::string const & target){
-	std::cout << "meleeAttack was called" << std::endl;
+	std::cout << "meleeAttack was called from " << target << std::endl;
 }
 
 void	Human::rangedAttack(std::string const & target){
-    std::cout << "rangedAttack was called" << std::endl;
+    std::cout << "rangedAttack was called from "<< target << std::endl;
 }
 
 void	Human::intimidatingShout(std::string const & target){
-    std::cout << "intimidatingShout was called" << std::endl;
+    std::cout << "intimidatingShout was called from "<< target << std::endl;
 }
 
 void	Human::action(std::string const & action_name, std::string const & target){
