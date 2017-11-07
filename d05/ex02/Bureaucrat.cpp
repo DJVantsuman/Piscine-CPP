@@ -52,7 +52,21 @@ Bureaucrat &	Bureaucrat::operator=(Bureaucrat const &rhs)
 }
 
 void				Bureaucrat::signForm(Form & form){
+	try{
 	form.beSigned(*this);
+	}
+	catch (Form::GradeTooLowException ex){
+
+	}
+}
+
+void				Bureaucrat::executeForm(Form const & form){
+	try{
+		form.execute(*this);
+	}
+	catch(Form::GradeTooLowException ex){
+		
+	}
 }
 
 Bureaucrat::GradeTooHighException::GradeTooHighException(){}

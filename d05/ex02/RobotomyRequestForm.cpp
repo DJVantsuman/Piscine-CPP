@@ -13,12 +13,14 @@
 
 #include "RobotomyRequestForm.hpp"
 
+static int i = 1;
+
 RobotomyRequestForm::RobotomyRequestForm() {}
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form(target, 72, 45){}
 RobotomyRequestForm::~RobotomyRequestForm()	{}
 
 void		RobotomyRequestForm::execute(Bureaucrat const & executor) const{
-	if(executor.getGrade() > this->getGradeToSign()){
+	if(executor.getGrade() > this->getGradeToSign() || !(this->getSignature())){
 		RobotomyRequestForm::GradeTooLowException::GradeTooLowException ex;
 		throw ex;
 	}
@@ -27,6 +29,6 @@ void		RobotomyRequestForm::execute(Bureaucrat const & executor) const{
 		std::string s1 = this->getName() + " has been robotomized successfully.";
 		std::string s2 = this->getName() + " has been robotomized failure.";
 		std::string s[2] = {s1, s2};
-		std::cout << s[rand() % 2] << std::endl;
+		std::cout << s[i % 2 == 0 ? 0 : 1] << std::endl;
 	}
 }

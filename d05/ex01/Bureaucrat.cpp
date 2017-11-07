@@ -18,16 +18,23 @@ Bureaucrat::Bureaucrat(): name("Defoult"){
 }
 
 Bureaucrat::Bureaucrat(std::string s, int n) : name(s){
-	if (n < 1){
-		Bureaucrat::GradeTooHighException::GradeTooHighException ex;
-		throw ex;
+	try{
+		if (n < 1)
+			throw Bureaucrat::GradeTooHighException::GradeTooHighException();
+		else if (n > 150){
+			throw Bureaucrat::GradeTooLowException::GradeTooLowException();
+		}
+		else
+			grade = n;
 	}
-	else if (n > 150){
-		Bureaucrat::GradeTooLowException::GradeTooLowException ex;
-		throw ex;
+	catch (GradeTooHighException ex)
+	{
+
+	} 
+	catch (GradeTooLowException ex)
+	{
+		std::cout << "Error: " << *this << ex.getMessage() << std::endl; 
 	}
-	else
-		grade = n;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &src){
@@ -45,18 +52,19 @@ Bureaucrat &	Bureaucrat::operator=(Bureaucrat const &rhs)
 }
 
 void				Bureaucrat::signForm(Form & form){
+	try{
 	form.beSigned(*this);
+	}
+	catch (Form::GradeTooLowException ex){
+
+	}
 }
 
-Bureaucrat::GradeTooHighException::GradeTooHighException()
-{
-	std::cout << "Too high grade." << std::endl;
-}
+Bureaucrat::GradeTooHighException::GradeTooHighException(){}
+std::string		Bureaucrat::GradeTooHighException::getMessage() const {return "Too high grade.";}
 
-Bureaucrat::GradeTooLowException::GradeTooLowException()
-{
-	std::cout << "Too low grade." << std::endl;
-}
+Bureaucrat::GradeTooLowException::GradeTooLowException(){}
+std::string		Bureaucrat::GradeTooLowException::getMessage() const {return "Too low grade.";}
 
 std::string const	Bureaucrat::getName() const{
 	return name;

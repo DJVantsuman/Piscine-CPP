@@ -41,16 +41,16 @@ class	Bureaucrat {
 
 class GradeTooHighException : public std::exception
 {
-
-public:
-	GradeTooHighException();
+	public:
+		GradeTooHighException();
+		std::string		getMessage() const;
 };
 
 class GradeTooLowException : public std::exception
 {
-
-public:
-	GradeTooLowException();
+	public:
+		GradeTooLowException();
+		std::string		getMessage() const;
 };
 
 };

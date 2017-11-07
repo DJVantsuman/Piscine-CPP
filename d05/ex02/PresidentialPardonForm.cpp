@@ -11,3 +11,19 @@
 /* ************************************************************************** */
 
 
+#include "PresidentialPardonForm.hpp"
+
+PresidentialPardonForm::PresidentialPardonForm() {}
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form(target, 25, 5){}
+PresidentialPardonForm::~PresidentialPardonForm()	{}
+
+void		PresidentialPardonForm::execute(Bureaucrat const & executor) const{
+	if(executor.getGrade() > this->getGradeToSign() || !(this->getSignature())){
+		PresidentialPardonForm::GradeTooLowException::GradeTooLowException ex;
+		throw ex;
+	}
+	else
+	{
+		std::cout << this->getName() << " has been pardoned by Zafod Beeblebrox." << std::endl;
+	}
+}

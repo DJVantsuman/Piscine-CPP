@@ -18,7 +18,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form(target, 
 ShrubberyCreationForm::~ShrubberyCreationForm()	{}
 
 void		ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
-	if(executor.getGrade() > this->getGradeToSign()){
+	if(executor.getGrade() > this->getGradeToSign() || !(this->getSignature())){
 		throw ShrubberyCreationForm::GradeTooLowException::GradeTooLowException();
 	}
 	else

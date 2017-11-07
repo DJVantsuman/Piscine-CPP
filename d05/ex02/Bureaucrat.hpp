@@ -36,6 +36,7 @@ class	Bureaucrat {
 		int 				getGrade() const;
 
 		void				signForm(Form  & form);
+		void				executeForm(Form const & form);
 
 		Bureaucrat	&operator=(Bureaucrat const &rhs);
 		Bureaucrat	operator++();
@@ -43,7 +44,6 @@ class	Bureaucrat {
 
 class GradeTooHighException : public std::exception
 {
-
 public:
 	GradeTooHighException();
 	std::string		getMessage() const;
