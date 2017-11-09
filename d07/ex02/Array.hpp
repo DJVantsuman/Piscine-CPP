@@ -30,8 +30,13 @@ class Array
 
 ////// operator=
 		Array<T> &operator=(Array<T> const &src){
+			T *a = new T[src.length];
+			T *b = array;
+			for (unsigned int i = 0; i < src.length; ++i)
+				a[i] = src.array[i];
 			length = src.length;
-			array = src.array;
+			array = a;
+			delete b;
 			return *this;
 		};
 
