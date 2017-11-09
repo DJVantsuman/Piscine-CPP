@@ -20,9 +20,12 @@ template <typename T>
 class Array
 {
 	private:
-		
+
 	public:
 		Array();
+		Array(unsigned int n);
+		Array(Array const &src);
 		~Array();
-	
+		Array &operator=(Array const &src);
+		
 };
