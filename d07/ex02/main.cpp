@@ -14,6 +14,26 @@
 
 int 	main(void){
 
-	Array<int> a(5);
+	Array<int> a1 = Array<int>(3);
+	Array<int> a2 = Array<int>(4);
+
+	a1.array[0] = 0;
+	a1.array[1] = 1;
+	a1.array[2] = 2;
+
+	a2.array[0] = 2;
+	a2.array[1] = 1;
+	a2.array[2] = 0;
+	a2.array[3] = -1;
+	
+	for (unsigned int i = 0; i < 3; i++)
+		std::cout << a1[i] << std::endl;
+
+	std::cout << std::endl;
+	a1 = a2;
+
+	for (unsigned int i = 0; i < 4; i++)
+		std::cout << a1[i] << std::endl;
+
 	return 0;
 }

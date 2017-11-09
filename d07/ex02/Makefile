@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	ex01.out
+NAME =	ex02.out
 FLAGS = -Wall -Werror -Wextra
 SRC = main.cpp
 CC = clang++

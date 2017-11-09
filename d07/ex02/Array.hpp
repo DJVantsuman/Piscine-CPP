@@ -19,36 +19,33 @@
 template <typename T>
 class Array
 {
-	private:
+	public:
 		unsigned int 	length;
 		T 				*array;
-	public:
 		Array<T>() : array(NULL), length(0) {};
 		Array<T>(unsigned int n) : length(n), array(new T[n]) {};
 		Array<T>(Array<T> const &src) {*this = src;};
 
-		~Array<T>();
+		~Array<T>(){};
 
 ////// operator=
 		Array<T> &operator=(Array<T> const &src){
-			if (this != &src)
-			{
-				try{
-					for(unsigned int i = 0; i < length; i++){
-						array[i] = src.array[i];
-					}
-				}
-				catch (std::exception ex){
-					std::cout << "Too long array." << std::endl;
-				}
-			}
+			length = src.length;
+			array = src.array;
 			return *this;
 		};
 
 /////// operator[]
-		T 		operator[](int n){
-			if(n >= length)
-				throw std::exception();
+		T 		operator[](unsigned int n){
+			try{
+				if(n > length - 1)
+					throw std::exception();
+			}
+			catch (std::exception ex)
+			{
+				std::cout << "Error: Element " << n << " is out of the limit." << std::endl;
+			}
+
 			return array[n];
 		};
 
