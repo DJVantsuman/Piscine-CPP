@@ -12,7 +12,7 @@
 
 NAME =	ex01.out
 FLAGS = -Wall -Werror -Wextra
-SRC = iter.cpp
+SRC = main.cpp
 CC = clang++
 OSRC =	$(SRC:.cpp=.o)
 
