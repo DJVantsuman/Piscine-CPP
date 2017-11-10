@@ -14,12 +14,26 @@
 #ifndef MUTANTSTACK_HPP
 # define MUTANTSTACK_HPP
 
-# include <iostrim>
+# include <iostream>
+# include <stack>
 
-class Mutantstack
+template<typename T>
+class MutantStack : public std::stack<T>
 {
 public:
-	Mutantstack();
-	~Mutantstack();
-	
+    typedef typename std::stack<T>::container_type::iterator iterator;
+    
+    MutantStack<T>() : std::stack<T>() { }
+    ~MutantStack<T>() { }
+    MutantStack<T>(MutantStack<T> const & src) : std::stack<T>(src) {}
+    
+    iterator begin() {
+        return std::stack<T>::c.begin();
+    }
+    
+    iterator end() {
+        return std::stack<T>::c.end();
+    }
 };
+
+#endif
